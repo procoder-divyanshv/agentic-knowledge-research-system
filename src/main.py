@@ -1,25 +1,12 @@
-from typing import TypedDict
-from langgraph.graph import StateGraph, START, END
+from src.workflow import workflow
 
-class State(TypedDict):
-    message: str
+result = workflow.invoke(
+    {"question" : "What is an AI Agent? Explain in one sentence.",
+     "response" : ""
+     }
 
+)
 
-def hello_node(state: State):
-    return {
-        "message" : f"Hello you said, {state['message']}"
-    }
-
-
-graph_builder = StateGraph(State)
-
-graph_builder.add_node("hello", hello_node)
-graph_builder.add_edge(START, "hello")
-graph_builder.add_edge("hello", END)
-
-graph = graph_builder.compile()
-
-result = graph.invoke({"message": "i want to create the AI-Agent"})
-print(result)
+print(f"Question is : {result['question']} \n Response is : {result['response']}")
 
 
