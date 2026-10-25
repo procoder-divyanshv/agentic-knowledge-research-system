@@ -3,7 +3,7 @@ import time
 from src.workflow import workflow
 
 
-question = "What is an agent? explain in on sentence."
+question = "What are the latest developments in generative AI?"
 
 start_time = time.perf_counter()
 
